@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahil Mehta — Business Analyst & Analytics Professional</title>
+<meta name="description" content="Sahil Mehta — Business Analyst & Analytics professional. Data, process automation, BI dashboards, and applied AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15131F;
+    --surface:#1D1930;
+    --surface-2:#272141;
+    --line: rgba(247,245,250,0.10);
+    --text-hi:#F7F5FA;
+    --text-lo:#A69FC2;
+    --amber:#FFB627;
+    --teal:#2FE6C4;
+    --coral:#FF6B5E;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text-hi);
+    font-family:var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--amber); color:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(21,19,31,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:var(--font-display); font-weight:700; font-size:1.05rem;
+    letter-spacing:0.02em;
+  }
+  .nav-logo span{color:var(--amber);}
+  .nav-links{list-style:none; display:flex; gap:28px;}
+  .nav-links a{
+    font-size:0.88rem; text-decoration:none; color:var(--text-lo);
+    font-weight:500; letter-spacing:0.01em; transition:color .2s;
+    position:relative;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--text-hi);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px;
+    background:var(--amber); transition:width .25s;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-toggle{display:none; background:none; border:none; color:var(--text-hi); font-size:1.5rem; cursor:pointer;}
+
+  @media (max-width:780px){
+    .nav-links{
+      position:fixed; top:60px; right:0; height:calc(100vh - 60px); width:240px;
+      background:var(--surface); flex-direction:column; padding:32px 24px; gap:22px;
+      transform:translateX(100%); transition:transform .3s ease; border-left:1px solid var(--line);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding:140px 0 60px;
+    position:relative;
+  }
+  .hero::before{
+    content:''; position:absolute; top:-10%; right:-10%; width:60%; height:60%;
+    background:radial-gradient(circle, rgba(255,182,39,0.14) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:0.8rem; color:var(--teal);
+    text-transform:uppercase; letter-spacing:0.14em; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+
+  h1.hero-title{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(2.6rem, 6.5vw, 5.2rem);
+    line-height:1.02; letter-spacing:-0.01em;
+    max-width:14ch;
+  }
+  h1.hero-title .accent{color:var(--amber);}
+  .hero-sub{
+    margin-top:24px; font-size:clamp(1.05rem, 2vw, 1.3rem); color:var(--text-lo);
+    max-width:52ch;
+  }
+  .hero-sub strong{color:var(--text-hi); font-weight:600;}
+
+  .hero-ctas{margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:0.92rem;
+    padding:13px 26px; border-radius:8px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:9px; cursor:pointer;
+    border:1px solid transparent; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--amber); color:#1A1607;}
+  .btn-primary:hover{box-shadow:0 8px 24px rgba(255,182,39,0.35); transform:translateY(-2px);}
+  .btn-ghost{background:transparent; color:var(--text-hi); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal); transform:translateY(-2px);}
+
+  /* ---------- PIPELINE SIGNATURE ---------- */
+  .pipeline{
+    margin-top:68px; display:flex; align-items:center; gap:0; flex-wrap:wrap;
+    font-family:var(--font-mono); font-size:0.78rem;
+  }
+  .pipe-node{
+    display:flex; align-items:center; gap:10px; padding:10px 16px;
+    border:1px solid var(--line); border-radius:999px; background:var(--surface);
+    color:var(--text-lo); white-space:nowrap; transition:all .3s ease;
+  }
+  .pipe-node .num{color:var(--amber); font-weight:700;}
+  .pipe-node.active{border-color:var(--teal); color:var(--text-hi); box-shadow:0 0 0 1px var(--teal), 0 0 18px rgba(47,230,196,0.25);}
+  .pipe-arrow{color:var(--text-lo); padding:0 10px; opacity:0.6;}
+  @media (max-width:780px){.pipeline{gap:8px;} .pipe-arrow{display:none;} .pipe-node{width:100%;}}
+
+  .stat-strip{
+    margin-top:50px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  }
+  .stat{background:var(--surface); padding:20px 18px;}
+  .stat .num{font-family:var(--font-mono); font-size:1.55rem; font-weight:700; color:var(--amber);}
+  .stat .label{font-size:0.76rem; color:var(--text-lo); margin-top:4px; line-height:1.35;}
+  @media (max-width:780px){.stat-strip{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:110px 0;}
+  .section-head{margin-bottom:52px; max-width:640px;}
+  .section-eyebrow{
+    font-family:var(--font-mono); font-size:0.78rem; color:var(--teal);
+    text-transform:uppercase; letter-spacing:0.14em; margin-bottom:12px;
+  }
+  h2.section-title{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(1.8rem,3.4vw,2.6rem);
+    letter-spacing:-0.01em;
+  }
+  .section-desc{margin-top:14px; color:var(--text-lo); font-size:1.02rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:60px; align-items:start;}
+  @media (max-width:900px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--text-lo); margin-bottom:18px; font-size:1.02rem;}
+  .about-text strong{color:var(--text-hi); font-weight:600;}
+  .facts{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:28px;}
+  .facts dl{display:flex; flex-direction:column; gap:16px;}
+  .facts div{display:flex; justify-content:space-between; gap:12px; font-size:0.92rem; border-bottom:1px dashed var(--line); padding-bottom:14px;}
+  .facts div:last-child{border-bottom:none; padding-bottom:0;}
+  .facts dt{color:var(--text-lo);}
+  .facts dd{color:var(--text-hi); font-weight:600; text-align:right;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative; padding-left:32px; border-left:2px solid var(--line);}
+  .tl-item{position:relative; padding-bottom:48px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-38px; top:4px; width:12px; height:12px; border-radius:50%;
+    background:var(--ink); border:2px solid var(--amber);
+  }
+  .tl-item.current::before{background:var(--amber); box-shadow:0 0 0 4px rgba(255,182,39,0.2);}
+  .tl-date{font-family:var(--font-mono); font-size:0.78rem; color:var(--teal); text-transform:uppercase; letter-spacing:0.06em;}
+  .tl-role{font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-top:6px;}
+  .tl-org{color:var(--text-lo); font-size:0.92rem; margin-top:2px; margin-bottom:14px;}
+  .tl-list{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .tl-list li{position:relative; padding-left:20px; color:var(--text-lo); font-size:0.94rem;}
+  .tl-list li::before{content:'—'; position:absolute; left:0; color:var(--text-lo); opacity:0.5;}
+
+  /* ---------- PROJECTS ---------- */
+  .filter-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;}
+  .filter-btn{
+    font-family:var(--font-mono); font-size:0.78rem; padding:8px 16px; border-radius:999px;
+    border:1px solid var(--line); background:transparent; color:var(--text-lo); cursor:pointer;
+    transition:all .2s;
+  }
+  .filter-btn:hover{color:var(--text-hi); border-color:var(--text-lo);}
+  .filter-btn.active{background:var(--amber); color:#1A1607; border-color:var(--amber); font-weight:700;}
+
+  .project-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:960px){.project-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.project-grid{grid-template-columns:1fr;}}
+
+  .project-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:26px;
+    display:flex; flex-direction:column; gap:14px; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    text-decoration:none; color:inherit; position:relative; overflow:hidden;
+  }
+  .project-card:hover{transform:translateY(-6px); border-color:var(--teal); box-shadow:0 16px 32px rgba(0,0,0,0.35);}
+  .project-tag{
+    align-self:flex-start; font-family:var(--font-mono); font-size:0.68rem; text-transform:uppercase;
+    letter-spacing:0.08em; padding:4px 10px; border-radius:6px; background:var(--surface-2); color:var(--teal);
+  }
+  .project-title{font-family:var(--font-display); font-weight:600; font-size:1.12rem; line-height:1.3;}
+  .project-desc{color:var(--text-lo); font-size:0.9rem; flex-grow:1;}
+  .project-meta{display:flex; align-items:center; justify-content:space-between; font-size:0.8rem; color:var(--text-lo); font-family:var(--font-mono); padding-top:10px; border-top:1px solid var(--line);}
+  .project-meta .lang{display:flex; align-items:center; gap:6px;}
+  .lang-dot{width:8px; height:8px; border-radius:50%; background:var(--amber);}
+
+  .repo-feed-head{display:flex; align-items:center; justify-content:space-between; margin:64px 0 24px; flex-wrap:wrap; gap:14px;}
+  .repo-feed-head h3{font-family:var(--font-display); font-size:1.3rem; font-weight:600;}
+  #repo-status{font-family:var(--font-mono); font-size:0.8rem; color:var(--text-lo);}
+  .repo-list{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media (max-width:780px){.repo-list{grid-template-columns:1fr;}}
+  .repo-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 20px;
+    text-decoration:none; color:inherit; transition:border-color .2s, transform .2s;
+  }
+  .repo-row:hover{border-color:var(--amber); transform:translateX(4px);}
+  .repo-row .name{font-family:var(--font-mono); font-weight:600; font-size:0.92rem;}
+  .repo-row .desc{color:var(--text-lo); font-size:0.82rem; margin-top:4px; max-width:38ch;}
+  .repo-row .stars{font-family:var(--font-mono); font-size:0.82rem; color:var(--amber); white-space:nowrap;}
+  .skeleton{
+    height:64px; border-radius:10px; background:linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+    background-size:200% 100%; animation:shimmer 1.4s infinite;
+  }
+  @keyframes shimmer{0%{background-position:200% 0;} 100%{background-position:-200% 0;}}
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px;}
+  @media (max-width:780px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:26px;}
+  .skill-group h3{font-family:var(--font-display); font-size:1.02rem; font-weight:600; margin-bottom:16px; color:var(--teal);}
+  .chip-row{display:flex; flex-wrap:wrap; gap:9px;}
+  .chip{
+    font-family:var(--font-mono); font-size:0.8rem; padding:7px 13px; border-radius:8px;
+    background:var(--surface-2); border:1px solid var(--line); color:var(--text-hi);
+    transition:border-color .2s, color .2s;
+  }
+  .chip:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* ---------- CERTS ---------- */
+  .cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:900px){.cert-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.cert-grid{grid-template-columns:1fr;}}
+  .cert-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px;
+    font-size:0.88rem; display:flex; align-items:flex-start; gap:12px;
+  }
+  .cert-card .icon{color:var(--amber); font-family:var(--font-mono); font-weight:700;}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:28px; margin-bottom:18px;
+    display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  }
+  .edu-card h3{font-family:var(--font-display); font-size:1.15rem; font-weight:600;}
+  .edu-card .org{color:var(--teal); font-size:0.9rem; margin-top:4px;}
+  .edu-card .desc{color:var(--text-lo); font-size:0.88rem; margin-top:10px; max-width:60ch;}
+  .edu-card .meta{font-family:var(--font-mono); font-size:0.82rem; color:var(--text-lo); white-space:nowrap;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    padding:100px 0 50px; text-align:center; border-top:1px solid var(--line);
+  }
+  footer .section-eyebrow{justify-content:center; display:flex;}
+  footer h2{font-family:var(--font-display); font-weight:700; font-size:clamp(1.8rem,4vw,2.8rem); max-width:16ch; margin:14px auto 30px;}
+  .contact-links{display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:56px;}
+  .foot-bottom{color:var(--text-lo); font-size:0.82rem; font-family:var(--font-mono);}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">SAHIL<span>.</span>MEHTA</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero wrap">
+  <div class="eyebrow"><span class="dot"></span>OPEN TO BUSINESS ANALYST ROLES · MELBOURNE, AU</div>
+  <h1 class="hero-title">I turn messy data into decisions that <span class="accent">stick.</span></h1>
+  <p class="hero-sub">
+    I'm <strong>Sahil Mehta</strong>, a Business Analyst and Analytics professional based in Melbourne.
+    I bridge IT systems, process, and data — using SQL, Python and BI tooling to find the root cause,
+    map the workflow, and automate the fix.
+  </p>
+  <div class="hero-ctas">
+    <a href="https://github.com/sahil0804" target="_blank" rel="noopener" class="btn btn-primary">
+      View Repositories ↗
+    </a>
+    <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Download Résumé</a>
+    <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+  </div>
+
+  <div class="pipeline" id="pipeline">
+    <div class="pipe-node"><span class="num">01</span> Ingest</div><span class="pipe-arrow">→</span>
+    <div class="pipe-node"><span class="num">02</span> Clean</div><span class="pipe-arrow">→</span>
+    <div class="pipe-node"><span class="num">03</span> Analyse</div><span class="pipe-arrow">→</span>
+    <div class="pipe-node"><span class="num">04</span> Automate</div><span class="pipe-arrow">→</span>
+    <div class="pipe-node"><span class="num">05</span> Decide</div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="num">150x</div><div class="label">Throughput gain automating supplier data validation (2/hr → 300/hr)</div></div>
+    <div class="stat"><div class="num">10,000+</div><div class="label">Products cleaned & standardised across 20+ suppliers</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Public repos spanning BI, ML & data analysis</div></div>
+    <div class="stat"><div class="num">2029</div><div class="label">Full-time AU work rights (Temp Graduate 485 visa)</div></div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="wrap">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">// About</div>
+    <h2 class="section-title">Analyst first. Builder by habit.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I hold a <strong>Master of Business Analytics</strong> from La Trobe University and a <strong>Bachelor of Commerce (Accounting)</strong> from NMIMS Mumbai — a combination that lets me read a P&L and a database schema with equal comfort.</p>
+      <p>Most recently, as an <strong>IT Solutions Specialist at Probe CX</strong>, I manage incident lifecycles end-to-end, use BPMN to map recurring problems back to their root cause, and run UAT so system changes actually land with the people using them. Before that, at <strong>Flexikitch</strong>, I designed a GPT-powered retrieval-augmented generation pipeline that took supplier data cleanup from a manual slog to a largely automated workflow.</p>
+      <p>I care about the same thing in every role: turning ambiguous, messy inputs — tickets, spreadsheets, specification sheets, stakeholder complaints — into a structured process someone can actually act on.</p>
+    </div>
+    <div class="facts reveal">
+      <dl>
+        <div><dt>Location</dt><dd>Melbourne, VIC, Australia</dd></div>
+        <div><dt>Work Rights</dt><dd>Temp Graduate 485, valid to 2029</dd></div>
+        <div><dt>Focus</dt><dd>Business Analysis · Data Analytics</dd></div>
+        <div><dt>Core Tools</dt><dd>SQL · Power BI · Tableau · Python</dd></div>
+        <div><dt>Email</dt><dd>sahilmehta0804@gmail.com</dd></div>
+        <div><dt>Phone</dt><dd>+61 421 246 772</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience" class="wrap">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">// Experience</div>
+    <h2 class="section-title">Where the work happened</h2>
+    <p class="section-desc">A career built at the intersection of IT support, process improvement, and data — each role adding another layer of business context.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item current reveal">
+      <div class="tl-date">May 2026 — Current · Melbourne, VIC</div>
+      <div class="tl-role">Solution Specialist (IT Solutions)</div>
+      <div class="tl-org">Probe CX</div>
+      <ul class="tl-list">
+        <li>Manage end-to-end incident lifecycles in an Agile ticketing framework, from categorisation through resolution.</li>
+        <li>Apply Process Mapping and BPMN to identify root causes behind recurring technical issues and deploy long-term fixes.</li>
+        <li>Facilitate UAT and translate technical detail into guidance non-technical stakeholders can act on.</li>
+        <li>Use Power Platform and Power Automate to integrate disparate systems via APIs and streamline workflows.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-date">Jul 2025 — Oct 2025 · Brunswick, VIC</div>
+      <div class="tl-role">Database Integrity Technician</div>
+      <div class="tl-org">Flexikitch</div>
+      <ul class="tl-list">
+        <li>Cleaned and standardised a supplier database of 10,000+ products across 20+ suppliers with inconsistent formats.</li>
+        <li>Built a GPT-powered RAG solution to extract structured product data from unstructured spec sheets.</li>
+        <li>Automated validation workflows, lifting throughput from ~2 to ~300 products/hour.</li>
+        <li>Presented structured datasets and analytical summaries to senior stakeholders and the board.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-date">Aug 2024 — Current · Footscray, VIC</div>
+      <div class="tl-role">Customer Service Team Member</div>
+      <div class="tl-org">Woolworths CFC</div>
+      <ul class="tl-list">
+        <li>Maintained accurate stock handling, order fulfilment and inventory checks against strict productivity targets.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-date">Jun 2024 — Sep 2024 · Remote</div>
+      <div class="tl-role">Industry Experience Program</div>
+      <div class="tl-org">Study Australia × Practera</div>
+      <ul class="tl-list">
+        <li>Led market and competitor analysis for a private therapy practice, benchmarking pricing and online presence.</li>
+        <li>Identified under-pricing and delivered a structured, data-backed growth recommendation document.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-date">Dec 2023 — Jan 2024 · Melbourne, VIC</div>
+      <div class="tl-role">Admin Support / Reception</div>
+      <div class="tl-org">Tutt Bryant</div>
+      <ul class="tl-list">
+        <li>Managed building security and telecommunications systems as first point of contact for technical triage.</li>
+        <li>Maintained an IT asset register, tracking lifecycle and coordinating warranty repairs.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-date">Jan 2022 — Jul 2022 · Mumbai, India</div>
+      <div class="tl-role">Research & Marketing Development Head</div>
+      <div class="tl-org">Yangpoo</div>
+      <ul class="tl-list">
+        <li>Planned and executed charity events, raising funds through structured community outreach.</li>
+        <li>Assessed operational costs and managed social media and digital asset curation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects" class="wrap">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">// Projects</div>
+    <h2 class="section-title">Data, made legible</h2>
+    <p class="section-desc">A mix of BI dashboards, applied ML, and analytical deep-dives — pulled straight from <a href="https://github.com/sahil0804" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:underline;">github.com/sahil0804</a>.</p>
+  </div>
+
+  <div class="filter-row reveal" id="filterRow">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="bi">BI Dashboards</button>
+    <button class="filter-btn" data-filter="ml">Machine Learning</button>
+    <button class="filter-btn" data-filter="analysis">Analysis</button>
+  </div>
+
+  <div class="project-grid reveal" id="projectGrid">
+    <a class="project-card" data-cat="bi" href="https://github.com/sahil0804/employee-attrition-analysis-tableau" target="_blank" rel="noopener">
+      <span class="project-tag">Tableau · BI</span>
+      <div class="project-title">Employee Attrition Analysis</div>
+      <p class="project-desc">Interactive Tableau dashboard analysing income, salary hikes, job roles and work experience to support HR retention and workforce planning decisions.</p>
+      <div class="project-meta"><span class="lang">Tableau</span><span>View repo ↗</span></div>
+    </a>
+
+    <a class="project-card" data-cat="bi" href="https://github.com/sahil0804/player-performance-analysis-tableau" target="_blank" rel="noopener">
+      <span class="project-tag">Tableau · BI</span>
+      <div class="project-title">Player Performance Analysis</div>
+      <p class="project-desc">Interactive Tableau dashboards comparing forward players on scoring output, physical attributes and consistency across multiple seasons.</p>
+      <div class="project-meta"><span class="lang">Tableau</span><span>View repo ↗</span></div>
+    </a>
+
+    <a class="project-card" data-cat="ml" href="https://github.com/sahil0804/BushFirePredictor" target="_blank" rel="noopener">
+      <span class="project-tag">Python · ML</span>
+      <div class="project-title">Bush Fire Predictor</div>
+      <p class="project-desc">A Python-based predictive model estimating bushfire risk from environmental and historical data — applied ML for public-safety decision support.</p>
+      <div class="project-meta"><span class="lang"><span class="lang-dot"></span>Python</span><span>View repo ↗</span></div>
+    </a>
+
+    <a class="project-card" data-cat="ml" href="https://github.com/sahil0804/object-detection-and-tracking-opencv-pytorch" target="_blank" rel="noopener">
+      <span class="project-tag">Python · ML</span>
+      <div class="project-title">Object Detection & Tracking</div>
+      <p class="project-desc">Real-time object detection and tracking built with OpenCV and PyTorch, exploring applied computer vision beyond core analytics work.</p>
+      <div class="project-meta"><span class="lang"><span class="lang-dot"></span>Jupyter Notebook</span><span>View repo ↗</span></div>
+    </a>
+
+    <a class="project-card" data-cat="analysis" href="https://github.com/sahil0804/Assignment-on-NYC-Taxi" target="_blank" rel="noopener">
+      <span class="project-tag">Analysis</span>
+      <div class="project-title">NYC Taxi Data Analysis</div>
+      <p class="project-desc">Exploratory data analysis of NYC taxi trip data — cleaning, aggregation and visualisation to surface demand and fare patterns.</p>
+      <div class="project-meta"><span class="lang"><span class="lang-dot"></span>Jupyter Notebook</span><span>View repo ↗</span></div>
+    </a>
+
+    <a class="project-card" data-cat="analysis" href="https://github.com/sahil0804/Analysis-of-NotebookLM-using-a-research-paper" target="_blank" rel="noopener">
+      <span class="project-tag">Research · Analysis</span>
+      <div class="project-title">Pharma Sector Impact Study</div>
+      <p class="project-desc">Published research analysing India's top 10 pharmaceutical companies before, during and after COVID — reframed for readers outside financial analysis using NotebookLM.</p>
+      <div class="project-meta"><span class="lang">Research</span><span>View repo ↗</span></div>
+    </a>
+  </div>
+
+  <div class="repo-feed-head reveal">
+    <h3>Live from GitHub</h3>
+    <span id="repo-status">fetching latest repositories…</span>
+  </div>
+  <div class="repo-list reveal" id="repoList">
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills" class="wrap">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">// Skills</div>
+    <h2 class="section-title">The toolkit</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <h3>Data & Analytics</h3>
+      <div class="chip-row">
+        <span class="chip">SQL (Joins, CTEs)</span><span class="chip">Python</span><span class="chip">Pandas</span>
+        <span class="chip">NumPy</span><span class="chip">KPI Dashboards</span><span class="chip">Predictive Modelling</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <h3>BI & Visualisation</h3>
+      <div class="chip-row">
+        <span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Advanced Excel</span>
+        <span class="chip">Data Storytelling</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <h3>Process & Systems</h3>
+      <div class="chip-row">
+        <span class="chip">BPMN / Process Mapping</span><span class="chip">ITIL Framework</span>
+        <span class="chip">UAT</span><span class="chip">Change Management</span><span class="chip">ERP Data Entry</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <h3>Automation & Platforms</h3>
+      <div class="chip-row">
+        <span class="chip">Power Automate</span><span class="chip">Power Platform</span>
+        <span class="chip">CRM & Ticketing Systems</span><span class="chip">RAG / Applied AI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CERTIFICATIONS ===================== -->
+<section id="certifications" class="wrap">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">// Certifications</div>
+    <h2 class="section-title">Credentials</h2>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card reveal"><span class="icon">✓</span>Tally SPA II (Accounting Software)</div>
+    <div class="cert-card reveal"><span class="icon">✓</span>Financial Modelling — Internshala</div>
+    <div class="cert-card reveal"><span class="icon">✓</span>Investment Banking Analyst — Finlatics</div>
+    <div class="cert-card reveal"><span class="icon">✓</span>Bloomberg Market Concepts (BMC)</div>
+    <div class="cert-card reveal"><span class="icon">✓</span>Fundamentals of Digital Marketing — Google</div>
+    <div class="cert-card reveal"><span class="icon">✓</span>Advanced Excel — Jaipuria School of Business</div>
+  </div>
+</section>
+
+<!-- ===================== EDUCATION ===================== -->
+<section id="education" class="wrap">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">// Education</div>
+    <h2 class="section-title">Foundations</h2>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <h3>Master of Business Analytics</h3>
+      <div class="org">La Trobe University, Melbourne — Avg. 71.33%</div>
+      <p class="desc">Focused on data analytics, machine learning, business intelligence, database systems, and applied AI for business decision-making.</p>
+    </div>
+    <div class="meta">2025</div>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <h3>Bachelor of Commerce (Hons.) — Accounting</h3>
+      <div class="org">NMIMS University, Mumbai — 3.06/4 CGPA</div>
+    </div>
+    <div class="meta">2023</div>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <h3>Vice President</h3>
+      <div class="org">La Trobe Student Association (LTSA)</div>
+      <p class="desc">Led student engagement and welfare initiatives; owned project scope, timelines, resourcing and budget across the executive committee.</p>
+    </div>
+    <div class="meta">Aug 2024 – Dec 2025</div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<footer id="contact" class="wrap">
+  <div class="section-eyebrow">// Let's talk</div>
+  <h2>Hiring for a Business Analyst role? I'd love to hear about it.</h2>
+  <div class="contact-links">
+    <a class="btn btn-primary" href="mailto:sahilmehta0804@gmail.com">Email Me ↗</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/sahil-mehta-074877216/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn btn-ghost" href="https://github.com/sahil0804" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+  </div>
+  <div class="foot-bottom">Sahil Mehta · Melbourne, VIC · +61 421 246 772 · © 2026</div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // Pipeline ambient animation
+  const pipeNodes = document.querySelectorAll('#pipeline .pipe-node');
+  let pipeIdx = 0;
+  setInterval(() => {
+    pipeNodes.forEach(n => n.classList.remove('active'));
+    pipeNodes[pipeIdx].classList.add('active');
+    pipeIdx = (pipeIdx + 1) % pipeNodes.length;
+  }, 1100);
+
+  // Project filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('#projectGrid .project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      projectCards.forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.cat === f) ? 'flex' : 'none';
+      });
+    });
+  });
+
+  // Live GitHub repo feed
+  const GH_USER = 'sahil0804';
+  const repoList = document.getElementById('repoList');
+  const repoStatus = document.getElementById('repo-status');
+
+  fetch(`https://api.github.com/users/${GH_USER}/repos?sort=updated&per_page=30`)
+    .then(res => {
+      if(!res.ok) throw new Error('GitHub API error: ' + res.status);
+      return res.json();
+    })
+    .then(repos => {
+      const visible = repos.filter(r => !r.fork).slice(0, 8);
+      if(visible.length === 0){
+        repoStatus.textContent = 'no public repositories found';
+        repoList.innerHTML = '';
+        return;
+      }
+      repoStatus.textContent = `${visible.length} most recently updated repositories`;
+      repoList.innerHTML = visible.map(r => `
+        <a class="repo-row" href="${r.html_url}" target="_blank" rel="noopener">
+          <div>
+            <div class="name">${r.name}</div>
+            <div class="desc">${r.description ? r.description : 'No description provided.'}</div>
+          </div>
+          <div class="stars">${r.language ? r.language + ' · ' : ''}★ ${r.stargazers_count}</div>
+        </a>
+      `).join('');
+    })
+    .catch(err => {
+      repoStatus.textContent = 'live feed unavailable — browse repositories directly ↗';
+      repoList.innerHTML = '';
+      console.warn(err);
+    });
+</script>
+
+</body>
+</html>
